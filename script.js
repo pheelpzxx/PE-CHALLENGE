@@ -1,12 +1,3 @@
-// ================================================
-// HELIXNOTES — SISTEMA DE NOTAS
-// ================================================
-
-
-// ================================================
-// ELEMENTOS DA PÁGINA
-// ================================================
-
 const noteForm = document.getElementById("noteForm");
 const noteTitle = document.getElementById("noteTitle");
 const noteContent = document.getElementById("noteContent");
@@ -14,273 +5,158 @@ const notesList = document.getElementById("notesList");
 const notesCount = document.getElementById("notesCount");
 const noteStatus = document.getElementById("noteStatus");
 
-
-// ================================================
-// CHAVE DO LOCALSTORAGE
-// ================================================
+const contactForm = document.getElementById("contactForm");
+const contactStatus = document.getElementById("contactStatus");
 
 const STORAGE_KEY = "helixnotes-notes";
 
-
-// ================================================
-// CARREGAR NOTAS
-// ================================================
+/* ================================
+   NOTAS
+================================ */
 
 function getNotes() {
-    const savedNotes = localStorage.getItem(STORAGE_KEY);
-
-    if (!savedNotes) {
-        return [];
-    }
-
-    try {
-        return JSON.parse(savedNotes);
-    } catch (error) {
-        console.error("Erro ao carregar as notas:", error);
-        return [];
-    }
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  } catch (error) {
+    console.error("Erro ao carregar notas:", error);
+    return [];
+  }
 }
-
-
-// ================================================
-// SALVAR NOTAS
-// ================================================
 
 function saveNotes(notes) {
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(notes)
-    );
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
 }
-
-
-// ================================================
-// ATUALIZAR CONTADOR
-// ================================================
 
 function updateNotesCount(notes) {
+  const total = notes.length;
 
-    const total = notes.length;
-
-    if (total === 1) {
-        notesCount.textContent = "1 nota";
-    } else {
-        notesCount.textContent = `${total} notas`;
-    }
+  notesCount.textContent =
+    total === 1 ? "1 nota" : `${total} notas`;
 }
 
+function showNoteStatus(message) {
+  noteStatus.textContent = message;
 
-// ================================================
-// MOSTRAR MENSAGEM
-// ================================================
-
-function showStatus(message) {
-
-    noteStatus.textContent = message;
-
-    setTimeout(() => {
-        noteStatus.textContent = "";
-    }, 2500);
+  setTimeout(() => {
+    noteStatus.textContent = "";
+  }, 2500);
 }
-
-
-// ================================================
-// EXIBIR NOTAS
-// ================================================
 
 function renderNotes() {
+  const notes = getNotes();
 
-    const notes = getNotes();
+  notesList.innerHTML = "";
 
-    notesList.innerHTML = "";
+  updateNotesCount(notes);
 
-    updateNotesCount(notes);
+  if (notes.length === 0) {
+    const emptyMessage = document.createElement("div");
 
+    emptyMessage.className = "empty-state";
+    emptyMessage.textContent =
+      "Nenhuma nota criada ainda. Crie sua primeira anotação!";
 
-    // Nenhuma nota cadastrada
+    notesList.appendChild(emptyMessage);
 
-    if (notes.length === 0) {
+    return;
+  }
 
-        const emptyMessage = document.createElement("div");
+  notes.forEach((note) => {
+    const noteCard = document.createElement("article");
+    noteCard.className = "note-card";
 
-        emptyMessage.className = "empty-notes";
+    const header = document.createElement("div");
+    header.className = "note-card-header";
 
-        emptyMessage.textContent =
-            "Você ainda não criou nenhuma nota.";
+    const title = document.createElement("h4");
+    title.textContent = note.title;
 
-        notesList.appendChild(emptyMessage);
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-note";
+    deleteButton.dataset.id = note.id;
+    deleteButton.textContent = "Excluir";
+    deleteButton.setAttribute("aria-label", `Excluir nota ${note.title}`);
 
-        return;
-    }
+    const content = document.createElement("p");
+    content.textContent = note.content;
 
+    header.appendChild(title);
+    header.appendChild(deleteButton);
 
-    // Criar os cards
+    noteCard.appendChild(header);
+    noteCard.appendChild(content);
 
-    notes.forEach((note) => {
-
-        const noteCard = document.createElement("article");
-
-        noteCard.className = "note-card";
-
-
-        // Cabeçalho
-
-        const header = document.createElement("div");
-
-        header.className = "note-card-header";
-
-
-        // Título
-
-        const title = document.createElement("h4");
-
-        title.textContent = note.title;
-
-
-        // Botão excluir
-
-        const deleteButton = document.createElement("button");
-
-        deleteButton.className = "delete-note";
-
-        deleteButton.type = "button";
-
-        deleteButton.textContent = "Excluir";
-
-        deleteButton.dataset.id = note.id;
-
-
-        // Conteúdo
-
-        const content = document.createElement("p");
-
-        content.textContent = note.content;
-
-
-        // Montagem
-
-        header.appendChild(title);
-
-        header.appendChild(deleteButton);
-
-        noteCard.appendChild(header);
-
-        noteCard.appendChild(content);
-
-        notesList.appendChild(noteCard);
-
-    });
+    notesList.appendChild(noteCard);
+  });
 }
 
-
-// ================================================
-// ADICIONAR NOTA
-// ================================================
-
 noteForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    event.preventDefault();
+  const title = noteTitle.value.trim();
+  const content = noteContent.value.trim();
 
+  if (!title || !content) {
+    showNoteStatus("Preencha o título e a anotação.");
+    return;
+  }
 
-    const title = noteTitle.value.trim();
+  const notes = getNotes();
 
-    const content = noteContent.value.trim();
+  const newNote = {
+    id: Date.now().toString(),
+    title,
+    content
+  };
 
+  notes.unshift(newNote);
 
-    // Validação
+  saveNotes(notes);
+  renderNotes();
 
-    if (!title || !content) {
+  noteForm.reset();
 
-        showStatus(
-            "Preencha o título e o conteúdo da nota."
-        );
-
-        return;
-    }
-
-
-    // Recuperar notas existentes
-
-    const notes = getNotes();
-
-
-    // Criar nova nota
-
-    const newNote = {
-
-        id: Date.now().toString(),
-
-        title: title,
-
-        content: content
-
-    };
-
-
-    // Adicionar ao início da lista
-
-    notes.unshift(newNote);
-
-
-    // Salvar no navegador
-
-    saveNotes(notes);
-
-
-    // Atualizar interface
-
-    renderNotes();
-
-
-    // Limpar formulário
-
-    noteForm.reset();
-
-
-    // Mensagem
-
-    showStatus("Nota salva com sucesso!");
+  showNoteStatus("Nota salva com sucesso!");
 });
-
-
-// ================================================
-// EXCLUIR NOTA
-// ================================================
 
 notesList.addEventListener("click", (event) => {
+  const deleteButton = event.target.closest(".delete-note");
 
-    const deleteButton =
-        event.target.closest(".delete-note");
+  if (!deleteButton) {
+    return;
+  }
 
+  const noteId = deleteButton.dataset.id;
 
-    if (!deleteButton) {
-        return;
-    }
+  const updatedNotes = getNotes().filter(
+    (note) => note.id !== noteId
+  );
 
+  saveNotes(updatedNotes);
+  renderNotes();
 
-    const noteId = deleteButton.dataset.id;
-
-
-    const notes = getNotes();
-
-
-    const updatedNotes = notes.filter(
-        (note) => note.id !== noteId
-    );
-
-
-    saveNotes(updatedNotes);
-
-
-    renderNotes();
-
-
-    showStatus("Nota excluída.");
+  showNoteStatus("Nota excluída.");
 });
 
+/* ================================
+   CONTATO
+================================ */
 
-// ================================================
-// INICIALIZAÇÃO
-// ================================================
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  contactStatus.textContent =
+    "Mensagem preparada com sucesso! Este formulário é uma demonstração do projeto.";
+
+  contactForm.reset();
+
+  setTimeout(() => {
+    contactStatus.textContent = "";
+  }, 4000);
+});
+
+/* ================================
+   INICIALIZAÇÃO
+================================ */
 
 renderNotes();
