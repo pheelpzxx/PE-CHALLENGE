@@ -1,301 +1,263 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="HelixNotes — notas rápidas e organizadas para programadores."
-    >
-
-    <title>HelixNotes — Notas para programadores</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="HelixNotes — aplicativo de notas criado para programadores organizarem ideias, códigos e anotações."
+  >
+  <title>HelixNotes — Notas para programadores</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ================================
-         HEADER
-    ================================= -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo">Helix<span>Notes</span></a>
 
-    <header class="header">
+      <div class="nav-links">
+        <a href="#recursos">Recursos</a>
+        <a href="#demo">Demo</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+  </header>
 
-        <nav class="navbar">
+  <main>
 
-            <a href="#" class="logo">
-                HelixNotes
-            </a>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-content">
 
-        </nav>
+        <p class="hero-label">FEITO PARA PROGRAMADORES</p>
 
-    </header>
+        <h1>
+          Suas ideias.
+          <span>Seu código.</span>
+          Tudo organizado.
+        </h1>
 
+        <p class="hero-description">
+          O HelixNotes é um espaço simples e rápido para programadores
+          registrarem ideias, comandos, trechos de código e anotações
+          importantes durante o desenvolvimento.
+        </p>
 
-    <main>
+        <a href="#demo" class="button primary-button">
+          Testar o HelixNotes
+        </a>
 
-        <!-- ================================
-             HERO
-        ================================= -->
+      </div>
+    </section>
 
-        <section class="hero" id="inicio">
+    <!-- RECURSOS -->
+    <section id="recursos" class="section">
+      <div class="container">
 
-            <div class="hero-content">
+        <div class="section-heading">
+          <p class="section-label">RECURSOS</p>
+          <h2>Organize seu conhecimento</h2>
+          <p>
+            Tudo o que você precisa para manter suas anotações
+            acessíveis durante sua rotina de programação.
+          </p>
+        </div>
 
-                <span class="hero-label">
-                    FEITO PARA PROGRAMADORES
-                </span>
+        <div class="resources-grid">
 
-                <h1>
-                    Suas ideias.
-                    <span>Seu código.</span>
-                    Tudo organizado.
-                </h1>
+          <article class="resource-card">
+            <div class="resource-icon">⚡</div>
+            <h3>Salvamento automático</h3>
+            <p>
+              Suas anotações ficam armazenadas no navegador para
+              que você possa continuar de onde parou.
+            </p>
+          </article>
 
-                <p>
-                    O HelixNotes é um espaço simples e rápido para
-                    programadores registrarem ideias, comandos,
-                    soluções e anotações importantes durante o desenvolvimento.
-                </p>
+          <article class="resource-card">
+            <div class="resource-icon">⌕</div>
+            <h3>Busca instantânea</h3>
+            <p>
+              Encontre rapidamente informações importantes
+              sem perder tempo procurando entre arquivos.
+            </p>
+          </article>
 
-                <a href="#demo" class="hero-button">
-                    Testar o HelixNotes
-                </a>
+          <article class="resource-card">
+            <div class="resource-icon">◉</div>
+            <h3>Modo foco</h3>
+            <p>
+              Um ambiente simples para registrar ideias sem
+              distrações durante o desenvolvimento.
+            </p>
+          </article>
 
+          <article class="resource-card">
+            <div class="resource-icon">▦</div>
+            <h3>Organização simples</h3>
+            <p>
+              Crie, visualize e exclua suas notas de maneira
+              rápida e intuitiva.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section id="demo" class="section demo-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="section-label">DEMO</p>
+          <h2>Experimente agora</h2>
+          <p>
+            Crie uma anotação e veja como o HelixNotes pode
+            ajudar na sua rotina.
+          </p>
+        </div>
+
+        <div class="demo-layout">
+
+          <form id="noteForm" class="note-form">
+
+            <div class="form-group">
+              <label for="noteTitle">Título</label>
+              <input
+                type="text"
+                id="noteTitle"
+                placeholder="Ex.: Comandos Git"
+                required
+              >
             </div>
 
-        </section>
-
-
-        <!-- ================================
-             RECURSOS
-        ================================= -->
-
-        <section class="features" id="recursos">
-
-            <div class="features-container">
-
-                <div class="section-heading">
-
-                    <span class="section-label">
-                        RECURSOS
-                    </span>
-
-                    <h2>
-                        Feito para acompanhar
-                        <span>seu código.</span>
-                    </h2>
-
-                    <p>
-                        Tudo o que você precisa para registrar, encontrar
-                        e organizar suas ideias enquanto desenvolve.
-                    </p>
-
-                </div>
-
-
-                <div class="features-grid">
-
-                    <article class="feature-card">
-
-                        <div class="feature-icon">
-                            ↗
-                        </div>
-
-                        <h3>
-                            Salvamento automático
-                        </h3>
-
-                        <p>
-                            Suas anotações ficam salvas automaticamente
-                            no navegador, evitando que uma ideia importante
-                            seja perdida.
-                        </p>
-
-                    </article>
-
-
-                    <article class="feature-card">
-
-                        <div class="feature-icon">
-                            ⌕
-                        </div>
-
-                        <h3>
-                            Busca instantânea
-                        </h3>
-
-                        <p>
-                            Encontre rapidamente comandos, soluções e
-                            trechos de conhecimento sem precisar procurar
-                            manualmente.
-                        </p>
-
-                    </article>
-
-
-                    <article class="feature-card">
-
-                        <div class="feature-icon">
-                            ◉
-                        </div>
-
-                        <h3>
-                            Modo foco
-                        </h3>
-
-                        <p>
-                            Um espaço simples e livre de distrações para
-                            você concentrar suas ideias no que realmente
-                            importa.
-                        </p>
-
-                    </article>
-
-
-                    <article class="feature-card">
-
-                        <div class="feature-icon">
-                            ⌘
-                        </div>
-
-                        <h3>
-                            Organização simples
-                        </h3>
-
-                        <p>
-                            Mantenha suas ideias e anotações importantes
-                            reunidas em um único lugar, prontas para
-                            consultar quando precisar.
-                        </p>
-
-                    </article>
-
-                </div>
-
+            <div class="form-group">
+              <label for="noteContent">Anotação</label>
+              <textarea
+                id="noteContent"
+                rows="7"
+                placeholder="Digite sua anotação..."
+                required
+              ></textarea>
             </div>
 
-        </section>
+            <button type="submit" class="button primary-button">
+              Salvar nota
+            </button>
 
+            <p id="noteStatus" class="status-message" aria-live="polite"></p>
 
-        <!-- ================================
-             DEMONSTRAÇÃO
-        ================================= -->
+          </form>
 
-        <section class="demo" id="demo">
+          <div class="notes-container">
 
-            <div class="demo-container">
+            <div class="notes-header">
+              <div>
+                <p class="section-label">MINHAS NOTAS</p>
+                <h3>Suas anotações</h3>
+              </div>
 
-                <div class="section-heading">
-
-                    <span class="section-label">
-                        DEMONSTRAÇÃO
-                    </span>
-
-                    <h2>
-                        Experimente o
-                        <span>HelixNotes.</span>
-                    </h2>
-
-                    <p>
-                        Crie uma anotação abaixo e veja como o HelixNotes
-                        mantém suas ideias organizadas diretamente no navegador.
-                    </p>
-
-                </div>
-
-
-                <!-- FORMULÁRIO -->
-
-                <form class="note-form" id="noteForm">
-
-                    <div class="input-group">
-
-                        <label for="noteTitle">
-                            Título da nota
-                        </label>
-
-                        <input
-                            type="text"
-                            id="noteTitle"
-                            name="noteTitle"
-                            placeholder="Ex.: Comandos Git importantes"
-                            maxlength="80"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label for="noteContent">
-                            Conteúdo da nota
-                        </label>
-
-                        <textarea
-                            id="noteContent"
-                            name="noteContent"
-                            placeholder="Digite sua anotação..."
-                            maxlength="500"
-                            required
-                        ></textarea>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="note-button"
-                    >
-                        Adicionar nota
-                    </button>
-
-                </form>
-
-
-                <!-- MENSAGEM DE STATUS -->
-
-                <p
-                    class="note-status"
-                    id="noteStatus"
-                    aria-live="polite"
-                ></p>
-
-
-                <!-- LISTA DE NOTAS -->
-
-                <div class="notes-area">
-
-                    <div class="notes-header">
-
-                        <h3>
-                            Minhas notas
-                        </h3>
-
-                        <span id="notesCount">
-                            0 notas
-                        </span>
-
-                    </div>
-
-
-                    <div
-                        class="notes-list"
-                        id="notesList"
-                    ></div>
-
-                </div>
-
+              <span id="notesCount">0 notas</span>
             </div>
 
-        </section>
+            <div id="notesList" class="notes-list"></div>
 
-    </main>
+          </div>
 
+        </div>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- CONTATO -->
+    <section id="contato" class="section contact-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="section-label">CONTATO</p>
+          <h2>Quer saber mais sobre o HelixNotes?</h2>
+          <p>
+            Envie uma mensagem para conhecer melhor a proposta
+            do HelixNotes e compartilhar suas ideias sobre o projeto.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+
+          <div class="contact-info">
+            <h3>Fale com a Helix Studio</h3>
+
+            <p>
+              Tem uma sugestão, dúvida ou ideia para melhorar
+              a experiência de organização para programadores?
+              Preencha o formulário ao lado.
+            </p>
+
+            <div class="contact-highlight">
+              <strong>HelixNotes</strong>
+              <span>Organização simples para quem programa.</span>
+            </div>
+          </div>
+
+          <form id="contactForm" class="contact-form">
+
+            <div class="form-group">
+              <label for="contactName">Nome</label>
+              <input
+                type="text"
+                id="contactName"
+                placeholder="Seu nome"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">E-mail</label>
+              <input
+                type="email"
+                id="contactEmail"
+                placeholder="seuemail@email.com"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Mensagem</label>
+              <textarea
+                id="contactMessage"
+                rows="6"
+                placeholder="Escreva sua mensagem..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="button primary-button">
+              Enviar mensagem
+            </button>
+
+            <p
+              id="contactStatus"
+              class="status-message"
+              aria-live="polite"
+            ></p>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 HelixNotes — Helix Studio.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
