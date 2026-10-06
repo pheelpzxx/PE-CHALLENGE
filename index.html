@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HelixNotes — notas rápidas e organizadas para programadores.">
+
+    <meta
+        name="description"
+        content="HelixNotes — notas rápidas e organizadas para programadores."
+    >
+
     <title>HelixNotes — Notas para programadores</title>
 
     <link rel="stylesheet" href="style.css">
@@ -11,16 +16,31 @@
 
 <body>
 
+    <!-- ================================
+         HEADER
+    ================================= -->
+
     <header class="header">
+
         <nav class="navbar">
-            <a href="#" class="logo">HelixNotes</a>
+
+            <a href="#" class="logo">
+                HelixNotes
+            </a>
+
         </nav>
+
     </header>
+
 
     <main>
 
-        <!-- HERO -->
+        <!-- ================================
+             HERO
+        ================================= -->
+
         <section class="hero" id="inicio">
+
             <div class="hero-content">
 
                 <span class="hero-label">
@@ -39,15 +59,19 @@
                     soluções e anotações importantes durante o desenvolvimento.
                 </p>
 
-                <a href="#recursos" class="hero-button">
-                    Conhecer recursos
+                <a href="#demo" class="hero-button">
+                    Testar o HelixNotes
                 </a>
 
             </div>
+
         </section>
 
 
-        <!-- RECURSOS -->
+        <!-- ================================
+             RECURSOS
+        ================================= -->
+
         <section class="features" id="recursos">
 
             <div class="features-container">
@@ -73,7 +97,6 @@
 
                 <div class="features-grid">
 
-                    <!-- CARD 1 -->
                     <article class="feature-card">
 
                         <div class="feature-icon">
@@ -93,7 +116,6 @@
                     </article>
 
 
-                    <!-- CARD 2 -->
                     <article class="feature-card">
 
                         <div class="feature-icon">
@@ -113,7 +135,6 @@
                     </article>
 
 
-                    <!-- CARD 3 -->
                     <article class="feature-card">
 
                         <div class="feature-icon">
@@ -133,7 +154,6 @@
                     </article>
 
 
-                    <!-- CARD 4 -->
                     <article class="feature-card">
 
                         <div class="feature-icon">
@@ -151,6 +171,120 @@
                         </p>
 
                     </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             DEMONSTRAÇÃO
+        ================================= -->
+
+        <section class="demo" id="demo">
+
+            <div class="demo-container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        DEMONSTRAÇÃO
+                    </span>
+
+                    <h2>
+                        Experimente o
+                        <span>HelixNotes.</span>
+                    </h2>
+
+                    <p>
+                        Crie uma anotação abaixo e veja como o HelixNotes
+                        mantém suas ideias organizadas diretamente no navegador.
+                    </p>
+
+                </div>
+
+
+                <!-- FORMULÁRIO -->
+
+                <form class="note-form" id="noteForm">
+
+                    <div class="input-group">
+
+                        <label for="noteTitle">
+                            Título da nota
+                        </label>
+
+                        <input
+                            type="text"
+                            id="noteTitle"
+                            name="noteTitle"
+                            placeholder="Ex.: Comandos Git importantes"
+                            maxlength="80"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="noteContent">
+                            Conteúdo da nota
+                        </label>
+
+                        <textarea
+                            id="noteContent"
+                            name="noteContent"
+                            placeholder="Digite sua anotação..."
+                            maxlength="500"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="note-button"
+                    >
+                        Adicionar nota
+                    </button>
+
+                </form>
+
+
+                <!-- MENSAGEM DE STATUS -->
+
+                <p
+                    class="note-status"
+                    id="noteStatus"
+                    aria-live="polite"
+                ></p>
+
+
+                <!-- LISTA DE NOTAS -->
+
+                <div class="notes-area">
+
+                    <div class="notes-header">
+
+                        <h3>
+                            Minhas notas
+                        </h3>
+
+                        <span id="notesCount">
+                            0 notas
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="notes-list"
+                        id="notesList"
+                    ></div>
 
                 </div>
 
